@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Happy Birthday GOMS❤️</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #ff758c, #ff7eb3);
+            text-align: center;
+            padding-top: 80px;
+            overflow: hidden;
+            color: white;
+        }
+
+        .question-box {
+            display: none;
+            background: white;
+            color: #333;
+            padding: 30px;
+            margin: auto;
+            width: 400px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 15px;
+            background-color: #ff4d6d;
+            color: white;
+        }
+
+        .result {
+            font-size: 30px;
+            margin-top: 15px;
+        }
+
+        #finalSection {
+            display: none;
+            margin-top: 50px;
+        }
+
+        #bigMessage {
+            font-size: 75px;
+            font-weight: bold;
+            text-shadow: 0 0 20px #ff0055, 0 0 40px #ff99cc;
+            animation: zoomIn 1.5s ease-in-out;
+        }
+
+        #loveMessage {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.5); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .flower {
+            position: fixed;
+            top: -20px;
+            font-size: 24px;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(110vh);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<h1>🎉 Birthday Love Quiz 🎉</h1>
+
+<div id="q1" class="question-box">
+    <p>Q1: Who is the most handsome man in Aarthi's world?</p>
+    <button onclick="answer(this, true)">Hubby😍</button>
+    <button onclick="answer(this, false)">Actor Vijay😎</button>
+    <div class="result"></div>
+</div>
+
+<div id="q2" class="question-box">
+    <p>Q2: Who makes Aarthi smile every day?</p>
+    <button onclick="answer(this, false)">Mobile Phone 📱</button>
+    <button onclick="answer(this, true)">Hubby💖</button>
+    <div class="result"></div>
+</div>
+
+<div id="q3" class="question-box">
+    <p>Q3: Who owns Aarthi’s heart forever?</p>
+    <button onclick="answer(this, true)">Only Goms 😘</button>
+    <button onclick="answer(this, false)">Nobody 😜</button>
+    <div class="result"></div>
+</div>
+
+<div id="q4" class="question-box">
+    <p>Q4: Whose birthday is the most special day?</p>
+    <button onclick="answer(this, true)">My Loving Husband 🎂</button>
+    <button onclick="answer(this, false)">Aarthi’s Birthday 😆</button>
+    <div class="result"></div>
+</div>
+
+<div id="finalSection">
+    <div id="bigMessage">
+        🎉 HAPPY BIRTHDAY HUBBY 🎉
+    </div>
+    <div id="loveMessage">
+        ❤️ You are my forever love and my greatest blessing ❤️ <br>
+        With all my love, <br>
+        — Aarthi 💖
+    </div>
+</div>
+
+<script>
+let currentQuestion = 1;
+
+window.onload = function() {
+    document.getElementById("q1").style.display = "block";
+}
+
+function answer(button, isCorrect) {
+    let box = button.parentElement;
+    let resultDiv = box.querySelector(".result");
+
+    if (resultDiv.innerHTML !== "") return;
+
+    if (isCorrect) {
+        resultDiv.innerHTML = "❤️";
+    } else {
+        resultDiv.innerHTML = "😠";
+    }
+
+    setTimeout(() => {
+        box.style.display = "none";
+        currentQuestion++;
+
+        if (currentQuestion <= 4) {
+            document.getElementById("q" + currentQuestion).style.display = "block";
+        } else {
+            showFinal();
+        }
+    }, 1200);
+}
+
+function showFinal() {
+    document.getElementById("finalSection").style.display = "block";
+    startFlowerShower();
+}
+
+function startFlowerShower() {
+    setInterval(() => {
+        let flower = document.createElement("div");
+        flower.classList.add("flower");
+        flower.innerHTML = "🌸";
+        flower.style.left = Math.random() * 100 + "vw";
+        flower.style.animationDuration = (3 + Math.random() * 2) + "s";
+        document.body.appendChild(flower);
+
+        setTimeout(() => {
+            flower.remove();
+        }, 5000);
+    }, 200);
+}
+</script>
+
+</body>
+</html>
